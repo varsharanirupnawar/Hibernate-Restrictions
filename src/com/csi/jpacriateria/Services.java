@@ -15,15 +15,20 @@ public class Services {
 		Session session = factory.openSession();
 		Transaction transaction = session.beginTransaction();
 		Employee e1 = new Employee();
-		e1.setEmpName("Varsha");
-		e1.setEmpSalary(45000.00);
-
-		session.save(e1);
-		List list=session.createQuery("from Employee").list();
-		list.forEach(a->System.out.println(list));
+//		e1.setEmpName("Varsha");
+//		e1.setEmpSalary(45000.00);
+//
+//		session.save(e1);
+		// List list=session.createQuery("select max(empSalary) from
+		// Employee").list();
+		// List list=session.createQuery("select min(empSalary) from
+		// Employee").list();
+//		List list = session.createQuery("select count(empSalary) from Employee").list();
+//		List list=session.createQuery("select avg(empSalary) from Employee").list();
+		List list=session.createQuery("select sum(empSalary) from Employee").list();
+		list.forEach(a -> System.out.println(list));
 		transaction.commit();
-		
-		
+
 	}
 
 }
